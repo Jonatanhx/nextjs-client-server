@@ -15,20 +15,20 @@ interface ContextValue {
 }
 
 //motorväg
-const CountProvider = createContext<ContextValue>({} as ContextValue);
+const CountContext = createContext<ContextValue>({} as ContextValue);
 
 //Update logic goes here; i.e: Increment, decrement methods.
 
 //påfart
-export default function CountContext(props: PropsWithChildren) {
+export default function CountProvider(props: PropsWithChildren) {
   const [count, setCount] = useState(0);
   return (
     /* Count = bilar */
-    <CountProvider.Provider value={{ count, setCount }}>
+    <CountContext.Provider value={{ count, setCount }}>
       {props.children}
-    </CountProvider.Provider>
+    </CountContext.Provider>
   );
 }
 
 //Avfarten
-export const useCount = () => useContext(CountProvider);
+export const useCount = () => useContext(CountContext);

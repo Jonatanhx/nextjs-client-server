@@ -1,4 +1,8 @@
 "use client";
+
+import { useCount } from "../CountProvider";
+
 export default function CountLabel() {
-  return <span>12</span>;
+  const { count } = useCount();
+  return <span>{count}</span>;
 }

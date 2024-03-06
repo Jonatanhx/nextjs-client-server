@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import CountContext from "./CountProvider";
 import "./globals.css";
 import CountLabel from "./ui/CountLabel";
 
@@ -19,13 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="p-4 bg-slate-400">
-          <nav className="flex justify-between text-xl">
-            <Link href="/">Home</Link>
-            <CountLabel></CountLabel>
-          </nav>
-        </header>
-        {children}
+        <CountContext>
+          <header className="p-4 bg-slate-400">
+            <nav className="flex justify-between text-xl">
+              <Link href="/">Home</Link>
+              <CountLabel></CountLabel>
+            </nav>
+          </header>
+          {children}
+        </CountContext>
       </body>
     </html>
   );
